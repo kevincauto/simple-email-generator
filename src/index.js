@@ -1,13 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'lodash';
-
+// import _ from 'lodash';
 import './index.css';
 
-import IDReaderForm from './components/IDReaderForm';
-import IDReaderHTML from './components/IDReaderHTML';
-import CCEDThematicForm from './components/CCEDThematicForm';
-import CCEDThematicHTML from './components/CCEDThematicHTML';
 import CCEDLiveWebinarForm from './components/CCEDLiveWebinarForm';
 import CCEDLiveWebinarHTML from './components/CCEDLiveWebinarHTML';
 import CCEDOnDemandWebinarForm from './components/CCEDOnDemandWebinarForm';
@@ -23,23 +18,13 @@ import IDTOnDemandWebinarHTML from './components/IDTOnDemandWebinarHTML';
 import IDTLiveWebinarForm from './components/IDTLiveWebinarForm';
 import IDTLiveWebinarHTML from './components/IDTLiveWebinarHTML';
 
-
-import Display from './components/Display';
-import FormSection from './components/FormSection';
-import {cced_thematic_initial_state, rows} from './templates/cced_thematic';
-import {idt_thematic_initial_state} from './templates/idt_thematic';
-
-
-
 class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected_template: 'cced_thematic',
+      selected_template: 'cced_live_webinar',
       month: undefined,
       year: undefined,
-      id_reader: {},
-      cced_thematic: cced_thematic_initial_state,
       cced_live_webinar: {},
       cced_on_demand_webinar: {},
       id_live_webinar: {},
@@ -47,16 +32,11 @@ class Container extends React.Component {
       cdew_live_webinar: {},
       idt_live_webinar: {},
       idt_on_demand_webinar: {},
-      idt_thematic: idt_thematic_initial_state
     };
+
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleTemplateChange = this.handleTemplateChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
-    this.handleFieldChange = this.handleFieldChange.bind(this);
-    this.handleFormAdd = this.handleFormAdd.bind(this);
-    this.handleFormDelete = this.handleFormDelete.bind(this);
-    this.handleFormSwitch = this.handleFormSwitch.bind(this);
-    this.handleFormDrag = this.handleFormDrag.bind(this);
   }
 
   componentDidMount() {
@@ -71,51 +51,6 @@ class Container extends React.Component {
       console.log(this.state);
   }
 
-  handleFormDrag(startIndex, endIndex){
-    let stateClone = _.cloneDeep(this.state);
-    let arrayOfRows = stateClone[this.state.selected_template];
-    const removedRow = arrayOfRows.splice(startIndex, 1);
-    arrayOfRows.splice(endIndex, 0, removedRow[0]);
-    stateClone[this.state.selected_template] = arrayOfRows;
-    this.setState(stateClone);
-
-  }
-  handleFormSwitch(form, value){
-    let stateClone = _.cloneDeep(this.state);
-
-    stateClone[this.state.selected_template].splice(form, 1, rows[value]);
-
-    this.setState(stateClone);
-  }
-
-  handleFormDelete(field){
-    
-    let stateClone = _.cloneDeep(this.state);
-    stateClone[this.state.selected_template].splice(field, 1);
-    this.setState(stateClone);
-  }
-  handleFormAdd(field){
-    let stateClone = _.cloneDeep(this.state);
-    // let row = stateClone[this.state.selected_template][field];
-    let row =       {
-      typeOfRow: 'featured',
-      header: 'Featured Section',
-      closable: true,
-      switchable: true,
-      addable: true,
-      fields:  [
-          {label: 'Header', name: 'header', value: 'FEATURED EVENT'},
-          {label: 'Title', name: 'title'},
-          {label: 'Author', name: 'author'},
-          {label: 'Description', name: 'description', value: 'Lorem ipsum dolar emet eres consequetor alias dormutus.  Lorem ipsum dolar emet eres consequetor alias dormutus.  Lorem ipsum dolar emet eres consequetor alias dormutus.  '},
-          {label: 'Link', name: 'link'},
-          {label: 'Image Source Link', name: 'imgLink', value: 'http://placehold.it/150'}
-      ]
-    }
-    stateClone[this.state.selected_template].splice(field+1, 0, row);
-    this.setState(stateClone);
-
-  }
   handleDateChange(value, name){
     this.setState({[name]: value});
   }
@@ -130,12 +65,6 @@ class Container extends React.Component {
     });
   }
 
-  handleFieldChange(form, field, value) {
-    let stateClone = _.cloneDeep(this.state);
-    stateClone[this.state.selected_template][form].fields[field].value = value;
-    this.setState(stateClone);
-  }
-
   handleTemplateChange(template) {
     //create a blank object for the template if it does not exist
     if (!this.state[template]) {
@@ -146,28 +75,15 @@ class Container extends React.Component {
 
   render() {
     return (
-
       <div id="container">
-        {this.state.selected_template === 'cced_thematic' ? 
-              <FormSection
-                info={this.state}
-                onTemplateChange={value => this.handleTemplateChange(value)}
-                onFieldChange={(form, field, value)=>this.handleFieldChange(form, field, value)}
-                onFormAdd={(field)=>this.handleFormAdd(field)}
-                onFormDelete={(field)=>this.handleFormDelete(field)}
-                onFormSwitch = {(form, value)=>this.handleFormSwitch(form, value)}
-                onFormDrag = {(startIndex, endIndex)=>this.handleFormDrag(startIndex, endIndex)}
-              /> :
-              <Form
+            <Form
               info={this.state}
               onTextChange={this.handleTextChange}
               onTemplateChange={value => this.handleTemplateChange(value)}
               onDateChange={this.handleDateChange}
             />
-      }
         <TextResults info={this.state} />
       </div>
-
     );
   }
 }
@@ -193,25 +109,6 @@ class Form extends React.Component {
 
   render() {
     let displayForm;
-
-      if (this.props.info.selected_template === 'id_reader') {
-        displayForm = (
-          <IDReaderForm
-            info={this.props.info}
-            onTextChange={this.handleTextChange}
-            onDateChange={this.handleDateChange}
-          />
-        );
-      } 
-      if (this.props.info.selected_template === 'cced_thematic') {
-        displayForm = (
-          <CCEDThematicForm
-            info={this.props.info}
-            onTextChange={this.handleTextChange}
-            onDateChange={this.handleDateChange}
-          />
-        );
-      } 
       if (this.props.info.selected_template === 'cced_live_webinar') {
         displayForm = (
           <CCEDLiveWebinarForm
@@ -298,8 +195,6 @@ class Form extends React.Component {
           <option value="cdew_live_webinar">CDEW Live Webinar</option>
           <option value="id_live_webinar">ID Live Webinar</option>    
           <option value="id_on_demand_webinar">ID On-Demand Webinar</option>
-          {/* <option value="id_reader">ID Reader</option> */}
-          <option value="cced_thematic">CCED Thematic</option>
           <option value="idt_live_webinar">IDT Live Webinar</option>
           <option value="idt_on_demand_webinar">IDT On-Demand Webinar</option>
         </select>
@@ -313,9 +208,6 @@ class Form extends React.Component {
 class TextResults extends React.Component {
   render() {
    let htmlDisplay = "Nothing to display right now.";
-   if(this.props.info.selected_template === 'id_reader'){htmlDisplay = <IDReaderHTML info={this.props.info} />}
-   if(this.props.info.selected_template === 'cced_thematic'){htmlDisplay = <Display info={this.props.info} />}
-   if(this.props.info.selected_template === 'idt_thematic'){htmlDisplay = <Display info={this.props.info} />}
    if(this.props.info.selected_template === 'id_on_demand_webinar'){htmlDisplay = <IDOnDemandWebinarHTML info={this.props.info} />}
    if(this.props.info.selected_template === 'cced_live_webinar'){htmlDisplay = <CCEDLiveWebinarHTML info={this.props.info} />}
    if(this.props.info.selected_template === 'cced_on_demand_webinar'){htmlDisplay = <CCEDOnDemandWebinarHTML info={this.props.info} />}
