@@ -1,4 +1,4 @@
-Email Generator
+Simple Email Generator
 ===============
 
 Start by cloning the repo:
@@ -18,3 +18,4 @@ npm start
 The Purpose
 -----------
 This app is meant to make putting together templated emails quick and easy.
+
