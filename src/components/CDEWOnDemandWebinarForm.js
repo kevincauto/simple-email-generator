@@ -17,7 +17,7 @@ const FIELDS = [
   {label: 'Image Link', name: 'imgLink'},
 ];
 
-export default class IDOnDemandWebinarForm extends React.Component {
+export default class CCEDLiveWebinarForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -80,6 +80,7 @@ export default class IDOnDemandWebinarForm extends React.Component {
               <option value="%%PLUGIN_UNSUBSCRIBE: 2200418-UNSUBSCRIBE%%">Nobel Webinar List | 3.28.17</option>
               <option value="%%PLUGIN_UNSUBSCRIBE: 2147849-UNSUBSCRIBE%%">CDEWorld - Lab | 4.3.17</option>
               <option value="%%PLUGIN_UNSUBSCRIBE: 2145051-UNSUBSCRIBE%% ">CDEWorld Webinar List | 3.28.17</option>
+              
             </select>
         </div>
         <div id="month-dropdown" className="label">

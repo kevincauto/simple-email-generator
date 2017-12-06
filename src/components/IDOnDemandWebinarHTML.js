@@ -1,11 +1,29 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
-
+import {saveAs} from 'file-saver';
 
 export default class IDOnDemandWebinarHTML extends React.Component {
+    downloadHtml(html, fileName){
+        if(!fileName){
+          alert("This email needs a name in order to be downloaded.");
+          return;
+        };
+        var file = new File([html], fileName + '.html', {type: "text/html"});
+        saveAs(file);
+    }
+    
+    downloadText(textEmail,fileName){
+        if(!fileName){
+          alert("This email needs a name in order to be downloaded.");
+          return;
+        };
+        var file = new File([textEmail], fileName + '.txt', {type: "text/plain;charset=utf-8"});
+        saveAs(file);
+    }   
+    
     render(){
     const {
-        lyrisName = '',
+        emailName = '',
             title, dates, provider, supporter, cost, credits, 
             description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             lo1, lo2, lo3, presenter, link, tvLink, unsubscribe, disclosure, imgLink
@@ -14,14 +32,15 @@ export default class IDOnDemandWebinarHTML extends React.Component {
     let {month, year} = this.props.info;
       
     //Take the Lyris Name and make a url slug out of it.
-    let slug = lyrisName.toString()
+    let slug = emailName.toString()
       .replace(/\s+/g, '-')           // Replace spaces with -
       .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
       .replace(/\-\-+/g, '-')         // Replace multiple - with single -
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
     
-    let url = `http://aegispublications.com/news/cced/${year}/${month}/${slug}.html`;
+
+    let url = `http://aegispublications.com/news/id/${year}/${month}/${slug}.html`;
         let image2 = 'http://placehold.it/200x150';
         if(imgLink){image2 = imgLink.trim()}
         
@@ -74,23 +93,23 @@ export default class IDOnDemandWebinarHTML extends React.Component {
          <strong>${title}</strong>
                 
                 <div style="font-size:11px; line-height:15px; clear:both; margin:9px 0 0 0;">
-                    <div style="color:#ad112b;"><strong>PRESENTER:</strong>
-                        <span style="color:#333333;">${presenter}</span>
+                    <div style="color:#ad112b;"><strong>PRESENTER: </strong>
+                        <span style="color:#333333;"> ${presenter}</span>
                     </div> 
                     <div style="color:#ad112b; clear:both;"><strong>CDE CREDITS:</strong> 
-                        <span style="color:#333333;">${credits}</span> 
+                        <span style="color:#333333;"> ${credits}</span> 
                     </div>
                     <div style="color:#ad112b; clear:both;"><strong>COST:</strong> 
-                        <span style="color:#333333;">${cost}</span>
+                        <span style="color:#333333;"> ${cost}</span>
                     </div>
-                    <div style="color:#ad112b; clear:both;"><strong>COMMERCIAL SUPPORTER:</strong>
-                        <span style="color:#333333;"><em>${supporter}</em></span>
+                    <div style="color:#ad112b; clear:both;"><strong>COMMERCIAL SUPPORTER: </strong>
+                        <span style="color:#333333;"><em> ${supporter}</em></span>
                     </div>
-                <div style="color:#ad112b; clear:both;"><strong>PROVIDER:</strong>
-                        <span style="color:#333333;"><em>${provider}</em></span>
+                <div style="color:#ad112b; clear:both;"><strong>PROVIDER: </strong>
+                        <span style="color:#333333;"><em> ${provider}</em></span>
                     </div>
-                       <div style="color:#ad112b; clear:both; margin:0 0 7px 0;"><strong>AVAILABLE:</strong>
-                        <span style="color:#333333;"><em>${dates}</em></span>
+                       <div style="color:#ad112b; clear:both; margin:0 0 7px 0;"><strong>AVAILABLE: </strong>
+                        <span style="color:#333333;"><em> ${dates}</em></span>
                     </div> 
                 </div>
          
@@ -198,11 +217,11 @@ export default class IDOnDemandWebinarHTML extends React.Component {
             <div className="copy-paste">
               <div className="copyArea html-copy">
                 <textarea value={html} readOnly={true}  />
-                <button onClick={()=>this.downloadHtml(html,lyrisName)} className="download-button">Download HTML Email</button>
+                <button onClick={()=>this.downloadHtml(html,slug)} className="download-button">Download HTML Email</button>
               </div>
               <div className="copyArea text-copy">
                 <textarea value={textEmail} readOnly={true}/>
-                <button onClick={()=>this.downloadText(textEmail,lyrisName)} className="download-button">Download Text-Version Email</button>
+                <button onClick={()=>this.downloadText(textEmail,slug)} className="download-button">Download Text-Version Email</button>
               </div>
             </div>
           </div>

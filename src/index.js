@@ -17,6 +17,8 @@ import IDTOnDemandWebinarForm from './components/IDTOnDemandWebinarForm';
 import IDTOnDemandWebinarHTML from './components/IDTOnDemandWebinarHTML';
 import IDTLiveWebinarForm from './components/IDTLiveWebinarForm';
 import IDTLiveWebinarHTML from './components/IDTLiveWebinarHTML';
+import CDEWOnDemandWebinarForm from './components/CDEWOnDemandWebinarForm';
+import CDEWOnDemandWebinarHTML from './components/CDEWOnDemandWebinarHTML';
 
 class Container extends React.Component {
   constructor(props) {
@@ -32,6 +34,7 @@ class Container extends React.Component {
       cdew_live_webinar: {},
       idt_live_webinar: {},
       idt_on_demand_webinar: {},
+      cdew_on_demand_webinar: {}
     };
 
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -181,6 +184,15 @@ class Form extends React.Component {
           />
         );
       } 
+      if (this.props.info.selected_template === 'cdew_on_demand_webinar') {
+        displayForm = (
+          <CDEWOnDemandWebinarForm 
+            info={this.props.info}
+            onTextChange={this.handleTextChange}
+            onDateChange={this.handleDateChange}
+          />
+        );
+      } 
 
     return (
       <div id="main-form">
@@ -197,6 +209,7 @@ class Form extends React.Component {
           <option value="id_on_demand_webinar">ID On-Demand Webinar</option>
           <option value="idt_live_webinar">IDT Live Webinar</option>
           <option value="idt_on_demand_webinar">IDT On-Demand Webinar</option>
+          <option value="cdew_on_demand_webinar">CDEW On-Demand Webinar</option>
         </select>
         
         {displayForm}
@@ -215,6 +228,7 @@ class TextResults extends React.Component {
    if(this.props.info.selected_template === 'cdew_live_webinar'){htmlDisplay = <CDEWLiveWebinarHTML info={this.props.info} />}
    if(this.props.info.selected_template === 'idt_live_webinar'){htmlDisplay = <IDTLiveWebinarHTML info={this.props.info} />}
    if(this.props.info.selected_template === 'idt_on_demand_webinar'){htmlDisplay = <IDTOnDemandWebinarHTML info={this.props.info} />}
+   if(this.props.info.selected_template === 'cdew_on_demand_webinar'){htmlDisplay = <CDEWOnDemandWebinarHTML info={this.props.info} />}
     return (
         <div id="text-results">
         {htmlDisplay}
