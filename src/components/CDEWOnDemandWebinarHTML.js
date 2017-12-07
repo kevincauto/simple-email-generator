@@ -48,7 +48,7 @@ export default class CCEDOnDemandWebinarHTML extends React.Component{
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
     
-    let url = `http://aegispublications.com/news/cced/${year}/${month}/${slug}.html`;
+    let url = `http://aegispublications.com/news/cdeworld/${year}/${month}/${slug}.html`;
         let image = 'http://placehold.it/250x200';
         if(imgLink){image = imgLink.trim()}
         let html = `
