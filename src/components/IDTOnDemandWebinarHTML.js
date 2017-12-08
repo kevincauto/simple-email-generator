@@ -135,10 +135,35 @@ export default class IDTOnDemandWebinarHTML extends React.Component {
         </center>
         </body></html>`;
 
+//Text Email        
+let textEmail = `Inside Dental Technology Webinar
+
+${title}       
+${link}
+
+Presenter: ${presenter}
+Dates: ${dates}
+Provider: ${provider}
+Commercial Supporter: ${supporter}
+Cost: ${cost}
+CDE Credits: ${credits}
+
+Description:
+${description}
+
+Learning Objectives
+${lo1}
+${lo2}
+${lo3}
+
+${disclosure ? `Disclosure:\n${disclosure}` : ``}     
+
+${link}
+`;  
+
    
         //Sanitize data to avoid XSS attack
         let cleanHtml = DOMPurify.sanitize(html);
-        let textEmail = `IDT On-Demand Webinar\n${title}\n${link}\n\nPresenter: ${presenter}\nCommercial Supporter: ${supporter}\nDescription:\n${description}\n\n${link}`;
         return(
         <div >
         <div className="content" dangerouslySetInnerHTML={{__html: cleanHtml}}></div>

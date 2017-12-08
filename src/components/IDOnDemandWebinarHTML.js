@@ -204,10 +204,36 @@ export default class IDOnDemandWebinarHTML extends React.Component {
         </html>
         `;
 
+//Text Email        
+let textEmail = `Inside Dentistry Webinar
+
+${title}       
+${link}
+
+Presenter: ${presenter}
+Dates: ${dates}
+Provider: ${provider}
+Commercial Supporter: ${supporter}
+Cost: ${cost}
+CDE Credits: ${credits}
+
+Description:
+${description}
+
+Learning Objectives
+${lo1}
+${lo2}
+${lo3}
+
+${disclosure ? `Disclosure:\n${disclosure}` : ``}     
+
+${link}
+`;  
+
         let html = start;    
         //Sanitize data to avoid XSS attack
         let cleanHtml = DOMPurify.sanitize(html);
-        let textEmail = `Inside Dentistry On-Demand Webinar\n${title}\n${link}\n\nPresenter: ${presenter}\n${dates}\nCommercial Supporter: ${supporter}\nCost: ${cost}\nCredits: ${credits}\nDescription:\n${description}\n\n${link}`;
+
 
         return(
             <div >

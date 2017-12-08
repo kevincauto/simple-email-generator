@@ -145,8 +145,32 @@ export default class CCEDOnDemandWebinarHTML extends React.Component{
         </body>
         </html>
         `
+//Text Email        
+let textEmail = `CDEWorld Webinar
 
-        let textEmail =  `Compendium On-Demand Webinar\n${title}\n${link}\n\nPresenter: ${presenter}\nProvider: ${provider}\nCommercial Supporter: ${supporter}\nCost: ${cost}\nAvailable:\n${dates}Description:\n${description}\n\n${link}`
+${title}       
+${link}
+
+Presenter: ${presenter}
+Dates: ${dates}
+Provider: ${provider}
+Commercial Supporter: ${supporter}
+Cost: ${cost}
+CDE Credits: ${credits}
+
+Description:
+${description}
+
+Learning Objectives
+${lo1}
+${lo2}
+${lo3}
+
+${disclosure ? `Disclosure:\n${disclosure}` : ``}     
+
+${link}
+`;  
+
         
         //Sanitize data to avoid XSS attack
         let cleanHtml = DOMPurify.sanitize(html);

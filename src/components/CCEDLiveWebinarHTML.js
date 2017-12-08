@@ -263,20 +263,44 @@ export default class CCEDLiveWebinarHTML extends React.Component{
         </body></html>
         `;
 
+//Text Email        
+let textEmail = `Compendium Webinar
+
+${title}       
+${link}
+
+Presenter: ${presenter}
+Date: ${date}
+Provider: ${provider}
+Commercial Supporter: ${supporter}
+Cost: ${cost}
+CDE Credits: ${credits}
+
+Description:
+${description}
+
+Learning Objectives
+${lo1}
+${lo2}
+${lo3}
+
+${disclosure ? 
+`Disclosure:
+${disclosure}
+` : ``}     
+${link}
+
+${tvLink? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
+http://forms.coronapro.com/2y1pylWI
+
+Webinar Hardware/Software Requirements
+CDEWorld requires Internet Explorer® version 7.0 or higher, or Firefox 3.0 or higher, a computer running Windows® XP, Windows® Vista, Windows® 7, or Mac OS X, 512MB of RAM or greater, 1.5 GHZ or faster processor, and a screen resolution of 1024x768 or higher. This activity will be marked with the information and/or links to the required software. That software may be Adobe® Acrobat®, Windows Media®Player or Microsoft® Silverlight™.`: ``}
+`;  
+
         let html = first + tag + main + lo + dis + trEnd + tv + theRest;
 
         //Sanitize data to avoid XSS attack
         let cleanHtml = DOMPurify.sanitize(html);
-
-        //if learning objectives exist, display in text email
-        let loText = '';
-        if(lo1){loText = `\nLearning Objectives:\n${lo1}\n${lo2}\n${lo3}\n`};
-
-        //if a disclosure exists, display in text email
-        let disText = '';
-        if(disclosure){disText = `\nDisclosure:\n${disclosure}\n`}
-
-        let textEmail =  `Compendium\n${title}\n${link}\n\nPresenter: ${presenter}\nProvider: ${provider}\nCommercial Supporter: ${supporter}\nCost: ${cost}\n\nDescription:\n${description}\n${loText}${disText}`;
 
         return(
           <div >
