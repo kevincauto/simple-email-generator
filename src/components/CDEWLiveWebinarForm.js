@@ -12,7 +12,8 @@ const FIELDS = [
   {label: 'Learning Objective 1', name: 'lo1'},
   {label: 'Learning Objective 2', name: 'lo2'},
   {label: 'Learning Objective 3', name: 'lo3'},
-  {label: 'Disclosure', name: 'disclosure'},
+  {label: 'Disclosure', name: 'disclosure'},  
+  {label: 'Call-to-Action', name: 'cta'},
   {label: 'Link', name: 'link'},
   {label: 'Headshot Link', name: 'headshot'},
   {label: 'TV Link', name: 'tvLink'}

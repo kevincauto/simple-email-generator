@@ -22,7 +22,7 @@ export default class IDTLiveWebinarHTML extends React.Component {
       }
 
     render() {
-        const { lyrisName='', title, date, provider, supporter, cost, credits, description, lo1, lo2, lo3, presenter, link, tvLink, unsubscribe, disclosure, header='http://aegispublications.com/news/idt/2015/06/tomorrow.jpg' } = this.props.info[this.props.info.selected_template];
+        const { lyrisName='', title, date, provider, supporter, cost, credits, description, lo1, lo2, lo3, presenter, link, tvLink, unsubscribe, disclosure, cta='View the Webinar', header='http://aegispublications.com/news/idt/2015/06/tomorrow.jpg' } = this.props.info[this.props.info.selected_template];
         
         let {month, year} = this.props.info;
       
@@ -85,7 +85,7 @@ export default class IDTLiveWebinarHTML extends React.Component {
         ${disclosure ? `<br /><strong>Disclosure: </strong><br />${disclosure}` : ``}
         
         
-        <a href="${link}" target="_blank" style="text-transform:uppercase; font-family:Gotham, sans-serif;  font-size:16px; background:#bf2a26; padding:10px 11px;color:#ffffff; border-radius:10px; font-weight:bold; display:block; width:193px; text-align:center;margin-bottom:18px; margin:14px 0 14px 0; text-decoration:none;">VIEW THE WEBINAR</a>
+        <a href="${link}" target="_blank" style="text-transform:uppercase; font-family:Gotham, sans-serif;  font-size:16px; background:#bf2a26; padding:10px 11px;color:#ffffff; border-radius:10px; font-weight:bold; display:block; width:193px; text-align:center;margin-bottom:18px; margin:14px 0 14px 0; text-decoration:none;">${cta}</a>
             </td>
                       </tr>
                     <tr>

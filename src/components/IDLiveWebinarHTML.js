@@ -26,7 +26,8 @@ export default class IDLiveWebinarHTML extends React.Component {
         const {title, date, provider, supporter, cost, credits, 
             description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
             lo1, lo2, lo3, presenter, link, headshot, tvLink, unsubscribe, disclosure,
-            emailName=''
+            emailName='',
+            cta="View the Webinar"
         } = this.props.info[this.props.info.selected_template];
         
     let {month, year} = this.props.info;
@@ -100,7 +101,7 @@ export default class IDLiveWebinarHTML extends React.Component {
         
                     <!-- Webinar Buttons -->
         
-                    <span style="font-size:16px; line-height:auto; color:#63246a; font-family:Arial, Helvetica, sans-serif; font-weight:normal; color:#005fae; margin-bottom:5px;"><a href="${link}" target="_blank"  style="color: #FFF;  text-transform:uppercase; display: inline-block;background-color:#9d0707; padding:7px 17px 7px 17px;text-align: center;text-decoration: none;"><strong>VIEW THE WEBINAR</strong></a></span></span>
+                    <span style="font-size:16px; line-height:auto; color:#63246a; font-family:Arial, Helvetica, sans-serif; font-weight:normal; color:#005fae; margin-bottom:5px;"><a href="${link}" target="_blank"  style="color: #FFF;  text-transform:uppercase; display: inline-block;background-color:#9d0707; padding:7px 17px 7px 17px;text-align: center;text-decoration: none;"><strong>${cta}</strong></a></span></span>
                     <br /><br />
                     <span style="font-size:11px; line-height:auto;">
                         <span style="color:#9d0707;"><strong>DESCRIPTION</strong></span><br /> ${description}

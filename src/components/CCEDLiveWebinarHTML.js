@@ -35,7 +35,8 @@ export default class CCEDLiveWebinarHTML extends React.Component{
       cost = '',
       credits = '',
       tvLink, tagline, unsubscribe, disclosure, 
-      emailName=''
+      emailName='',
+      cta='View the Webinar'
     } = this.props.info[this.props.info.selected_template];
 
     let {month, year} = this.props.info;
@@ -140,7 +141,7 @@ export default class CCEDLiveWebinarHTML extends React.Component{
               ${title}</div><br />
               <a href="${link}" target="_blank" style="font-size: 16px; font-weight:bold; display: inline-block;background-color: #c2904a;padding: 10px 11px; color: #fff;text-decoration: none; text-transform:uppercase; border-radius: 10px; text-align:center; margin:0 0 7px 0;">${date}</a> <br />
                     <a href="${link}" target="_blank" style="font-size: 16px; font-weight:bold; display: inline-block;background-color: #c2904a;padding: 10px 11px; color: #fff;text-decoration: none; text-transform:uppercase; border-radius: 10px; text-align:center;">
-                View the Webinar
+                ${cta}
               </a><br />
               <br />
                     <span>

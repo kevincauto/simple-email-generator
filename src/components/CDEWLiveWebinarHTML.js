@@ -36,7 +36,8 @@ export default class CDEWLiveWebinarHTML extends React.Component {
       cost = '',
       credits = '',
       tvLink, tagline, unsubscribe, disclosure, 
-      emailName=''
+      emailName='',
+      cta='View the Webinar'
     } = this.props.info[this.props.info.selected_template];
 
     let {month, year} = this.props.info;
@@ -84,7 +85,7 @@ export default class CDEWLiveWebinarHTML extends React.Component {
             <tr>
               <td align="left" valign="top" style="padding:12px 12px 12px 32px; font-size:13px; color:#005fae;"><span style="font-size:16px; line-height:auto; color:#005fae; font-family:Arial, Helvetica, sans-serif; font-weight:normal; color:#005fae; margin-bottom:5px;"> 
               <a href="${link}" target="_blank" style="color: #FFF;  text-transform:uppercase; display: inline-block;background-color:#005fae; padding:7px 17px 7px 17px;text-align: center;text-decoration: none; font-weight: bold;">${date}</a> </span><br />
-              <a href="${link}" target="_blank" style="font-size: 14px; font-weight:bold; display: inline-block;background-color: #005fae;padding: 14px;color: #fff;text-decoration: none; text-transform:uppercase; margin: 14px 0 14px 0;"> View Webinar </a> <br />
+              <a href="${link}" target="_blank" style="font-size: 14px; font-weight:bold; display: inline-block;background-color: #005fae;padding: 14px;color: #fff;text-decoration: none; text-transform:uppercase; margin: 14px 0 14px 0;"> ${cta} </a> <br />
                 <br />
                 <strong>Description:</strong><br />
                 ${description}<br />
