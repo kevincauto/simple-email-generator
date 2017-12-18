@@ -163,7 +163,7 @@ export default class CCEDOnDemandWebinarHTML extends React.Component{
         `
 
 //Text Email        
-let textEmail = `Compendium Webinar
+let textEmail = `Compendium On-Demand Webinar
 
 ${title}       
 ${link}
@@ -199,7 +199,7 @@ ${link}
             <div className="copy-paste">
               <div className="copyArea html-copy">
                 <textarea value={html} readOnly={true}  />
-                <button onClick={()=>this.downloadHtml(html,emailName)} className="download-button">Download HTML Email</button>
+                <button onClick={()=>this.downloadHtml(html,slug)} className="download-button">Download HTML Email</button>
               </div>
               <div className="copyArea text-copy">
                 <textarea value={textEmail} readOnly={true}/>

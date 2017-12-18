@@ -337,11 +337,11 @@ CDEWorld requires Internet Explorer® version 7.0 or higher, or Firefox 3.0 or h
             <div className="copy-paste">
               <div className="copyArea html-copy">
                 <textarea value={html} readOnly={true}  />
-                <button onClick={()=>this.downloadHtml(html,emailName)} className="download-button">Download HTML Email</button>
+                <button onClick={()=>this.downloadHtml(html,slug)} className="download-button">Download HTML Email</button>
               </div>
               <div className="copyArea text-copy">
                 <textarea value={textEmail} readOnly={true}/>
-                <button onClick={()=>this.downloadText(textEmail,emailName)} className="download-button">Download Text-Version Email</button>
+                <button onClick={()=>this.downloadText(textEmail,slug)} className="download-button">Download Text-Version Email</button>
               </div>
             </div>
           </div>
