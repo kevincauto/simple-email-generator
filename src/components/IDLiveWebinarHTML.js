@@ -40,7 +40,7 @@ export default class IDLiveWebinarHTML extends React.Component {
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
     
-    let url = `http://aegispublications.com/news/cced/${year}/${month}/${slug}.html`;
+    let url = `http://aegispublications.com/news/id/${year}/${month}/${slug}.html`;
             let image = 'http://placehold.it/140x180';
         if(headshot){image = headshot}
         let html 
