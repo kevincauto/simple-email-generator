@@ -154,55 +154,36 @@ export default class CDEWLiveWebinarHTML extends React.Component {
 
             let end =`
             <tr>
-              <!-- Fine Print Footer -->
-              <td colspan="2" align="center"><img src="http://cdeworld.com/media/3742" width="575" height="76" style="margin-top:20px; padding-top:20px; padding-bottom:10px; border-top:1px solid #dedede;" /></td>
-              <!-- /Fine Print Footer -->
-            </tr>
-            <tr>
-              <td colspan="2" height="10"></td>
-            </tr>
-            <!--<tr>
-                <td colspan="2" align="center" style="padding:12px 0;">
-                    <span style="font-size:11px; text-decoration:none; color:#526687;">
-                        %%PLUGIN_UNSUBSCRIBE: 1147025-CDEWorld Unsubscribe%%
-                    </span>
-                </td>
-            </tr>-->
-          </table>    <a href="http://aegispublications.com/news/cdeworld/2017/06/UCCI-8-Reminder.html" target="_blank" style="text-decoration:none; color:#005fae;"></a></td>
-        </tr>
-        </table>
-        <table width="600" align="center" cellspacing="0" cellpadding="0" border="0" style="font-family:'Helvetica', 'Arial', sans-serif;">
+            <!-- Fine Print Footer -->
+            <td colspan="2" align="center"><img src="http://cdeworld.com/media/3742" width="575" height="76" style="margin-top:20px; padding-top:20px; padding-bottom:10px; border-top:1px solid #dedede;" /></td>
+            <!-- /Fine Print Footer -->
+          </tr>
           <tr>
-              <td colspan="2" align="center" style="font-size:10px; color:#444444; padding:11px 0 11px 0;">
-                <!--<div style="padding-bottom:7px;">
-                    Dental Learning Systems
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    P.O. Box 510
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    Newtown, PA 18940
-                </div>-->
-                <div style="padding-bottom:7px;">
-                  © 2017 CDEWorld. All rights reserved.<br /> PO Box 510, Newtown, PA 18940<br />
-        <a href="mailto:?subject=CDEWorld Webinar&amp;body=I thought you might be interested in this: ${url}" target="_blank" style="text-decoration:none; color:#526687;">
-                        Forward to a Colleague
-                    </a> &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="http://www.dentalaegis.com/privacy-policy/" target="_blank" style="text-decoration:none; color:#526687;">
-                        Privacy Policy
-                    </a><br />${unsubscribe}
-                </div>
-                
-              </td>
-            </tr>
-          </table>
+            <td colspan="2" height="10"></td>
+          </tr>
+       
+        </table>    <a href="http://aegispublications.com/news/cdeworld/2017/06/UCCI-8-Reminder.html" target="_blank" style="text-decoration:none; color:#005fae;"></a></td>
+      </tr>
+      </table>
+      <table width="600" align="center" cellspacing="0" cellpadding="0" border="0" style="font-family:'Helvetica', 'Arial', sans-serif;">
+      <tr>
+      <td align="center" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
         
-          <map name="Map" id="Map">
-            <area shape="rect" coords="57,2,85,24" href="mailto:?subject=Free CE Webinar &amp;body=I thought you might be interested in this: ${url}" target="_blank" alt="mailto" />
-            <area shape="rect" coords="27,4,48,23" href="http://twitter.com/home?status=Free CE Webinar +${url}" target="_blank" alt="twitter" />
-            <area shape="rect" coords="5,3,21,24" href="${url}&title=CE%20Webinar!"  target="_blank" alt="fb" />
-        </map>
-        
-        
-        </body></html>`
+        <br>
+        You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | CDEWorld.<br />To ensure delivery, please add reply-207852@news.aegispublications.com to your address book<br />
+        ${unsubscribe}<br />
+       CDEWorld an AEGIS Publication | 104 Pheasant Run, Suite 105 | Newtown, PA 18940 | <a href="https://www.aegisdentalnetwork.com/privacy-policy" target="_blank" style="color:#666; text-decoration:none;">Privacy Policy</a></td>
+      </tr>
+        </table>
+      
+        <map name="Map" id="Map">
+          <area shape="rect" coords="57,2,85,24" href="mailto:?subject=Free CE Webinar &amp;body=I thought you might be interested in this: ${url}" target="_blank" alt="mailto" />
+          <area shape="rect" coords="27,4,48,23" href="http://twitter.com/home?status=Free CE Webinar +${url}" target="_blank" alt="twitter" />
+          <area shape="rect" coords="5,3,21,24" href="${url}&title=CE%20Webinar!"  target="_blank" alt="fb" />
+      </map>
+      
+      
+      </body></html>`
 
 //Text Email        
 let textEmail = `CDEWorld Webinar

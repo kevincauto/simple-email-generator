@@ -32,7 +32,7 @@ export default class IDLiveWebinarHTML extends React.Component {
         
     let {month, year} = this.props.info;
       
-    //Take the Lyris Name and make a url slug out of it.
+    //Take the email name and make a url slug out of it.
     let slug = emailName.toString()
       .replace(/\s+/g, '-')           // Replace spaces with -
       .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
@@ -248,38 +248,15 @@ export default class IDLiveWebinarHTML extends React.Component {
             
         
         
-           let end = `<tr>
-        
-            <td colspan="2" align="center" style="font-size:11px; color:#444444;">
-        
-                    Inside Dentistry
-        
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-        
-                    104 Pheasant Run, Suite 105
-        
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-        
-                    Newtown, PA 18940
-        
-                    
-        
-                    <hr size="1" color="#555555" width="500" />
-        
-                    
-        
-                    <a href="mailto:?subject=Live CDE Webinar!&body=I thought you might be interested in this: ${url}" target="_blank" style="text-decoration:none; color:#526687;">
-                        Forward to a Colleague
-                    </a>
-        
-                    &nbsp;&nbsp;|&nbsp;&nbsp; 
-        
-                    <a href="http://www.dentalaegis.com/privacy-policy/" target="_blank" style="text-decoration:none; color:#526687;">
-                        Privacy Policy
-                    </a><br />
-                    ${unsubscribe}
-                </td>
-            </tr>
+           let end = `
+           <tr>
+           <td align="center" colspan="2" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
+             
+             <br>
+             You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | <em>Inside Dentistry</em>.<br />To ensure delivery, please add reply-207852@news.aegispublications.com to your address book<br />
+             ${unsubscribe}<br />
+            <em>Inside Dentistry</em> an AEGIS Publication | 104 Pheasant Run, Suite 105 | Newtown, PA 18940 | <a href="https://www.aegisdentalnetwork.com/privacy-policy" target="_blank" style="color:#666; text-decoration:none;">Privacy Policy</a></td>
+           </tr>
             <tr>
                 <td colspan="2" height="10">
                 </td>

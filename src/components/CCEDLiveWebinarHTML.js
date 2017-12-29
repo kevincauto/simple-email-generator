@@ -238,22 +238,15 @@ export default class CCEDLiveWebinarHTML extends React.Component{
           </tr>
         </table>
         <table width="600" align="center" cellspacing="0" cellpadding="0" border="0" style="font-family:Arial, Helvetica, sans-serif;">
-          <tbody><tr>
-          <td colspan="2" align="center" style="font-size:10px; color:#444444; padding:11px 0 0 0;">
-              <a href="mailto:?subject=Live Webinar!&amp;body=I thought you might be interested in this: ${url}" target="_blank" style="text-decoration:none; color:#444444;">
-                Forward to a Colleague
-              </a>
-              &nbsp;&nbsp;|&nbsp;&nbsp; 
-              <a href="http://www.dentalaegis.com/privacy-policy/" target="_blank" style="text-decoration:none; color:#444444;">
-                Privacy Policy
-              </a>
-                <br />
-              Compendium  |  104 Pheasant Run, Suite 105  |  Newtown, PA 18940
-                <br />       
-            ${unsubscribe}
-        </div>
-            </td>
-          </tr>
+          <tbody>
+          <tr>
+					<td align="center" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
+						
+						<br>
+						You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | <em>Compendium</em>.<br />To ensure delivery, please add reply-207852@news.aegispublications.com to your address book<br />
+						${unsubscribe}<br />
+           <em>Compendium</em> an AEGIS Publication | 104 Pheasant Run, Suite 105 | Newtown, PA 18940 | <a href="https://www.aegisdentalnetwork.com/privacy-policy" target="_blank" style="color:#666; text-decoration:none;">Privacy Policy</a></td>
+			    </tr>
         </tbody></table>
           
         <map name="Map" id="Map">

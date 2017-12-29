@@ -134,12 +134,13 @@ export default class CCEDOnDemandWebinarHTML extends React.Component{
                 </td>
             </tr>
             <tr>
-              <td colspan="2" align="center" style="font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#666666; padding:11px 0 11px 0; border-top:solid 1px #efefef; background-color:#efefef;">
-                  © 2017 CDEWorld. All rights reserved.<br />
-        PO Box 510, Newtown, PA 18940<br />
-        ${unsubscribe}
-              </td>
-            </tr>	
+            <td align="center" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
+              
+              <br>
+              You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | CDEWorld.<br />To ensure delivery, please add reply-207852@news.aegispublications.com to your address book<br />
+              ${unsubscribe}<br />
+             CDEWorld an AEGIS Publication | 104 Pheasant Run, Suite 105 | Newtown, PA 18940 | <a href="https://www.aegisdentalnetwork.com/privacy-policy" target="_blank" style="color:#666; text-decoration:none;">Privacy Policy</a></td>
+            </tr>
           </tbody>
         </table>
         </body>

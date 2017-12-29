@@ -34,7 +34,7 @@ export default class IDTLiveWebinarHTML extends React.Component {
             .replace(/^-+/, '')             // Trim - from start of text
             .replace(/-+$/, '');            // Trim - from end of text
     
-        let url = `http://aegispublications.com/news/cced/${year}/${month}/${slug}.html`;
+        let url = `http://aegispublications.com/news/idt/${year}/${month}/${slug}.html`;
         let html = `<!doctype html>
         <html>
         <head>
@@ -170,13 +170,19 @@ export default class IDTLiveWebinarHTML extends React.Component {
                 ''
             }
 
+
             <tr>
-              <td colspan="2" align="center" valign="top" 
-                 style="font-family:Arial, sans-serif; font-size:10px; color:#424b52; text-align:center; padding:14px 14px 14px 14px; border-top:solid 1px #000000; border-bottom:solid 1px #000000;"> 
-                                            Inside Dental Technology | 104 Pheasant Run, Suite 105 | Newtown, PA 18940<br>
-                  ${unsubscribe}
-                </td>
+            <td  colspan="2" align="center" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
+              
+              <br>
+              You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | <em>Inside Dental Technology</em>.<br />To ensure delivery, please add reply-207852@news.aegispublications.com to your address book<br />
+              ${unsubscribe}<br />
+              <em>Inside Dental Technology</em> an AEGIS Publication | 104 Pheasant Run, Suite 105 | Newtown, PA 18940 | <a href="https://www.aegisdentalnetwork.com/privacy-policy" target="_blank" style="color:#666; text-decoration:none;">Privacy Policy</a></td>
             </tr>
+            <tr>
+            <td colspan="2" height="10">
+            </td>
+        </tr>
           </tbody>
         </table>
         </center>
