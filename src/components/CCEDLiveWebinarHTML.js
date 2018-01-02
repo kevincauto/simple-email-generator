@@ -40,6 +40,8 @@ export default class CCEDLiveWebinarHTML extends React.Component{
     } = this.props.info[this.props.info.selected_template];
 
     let {month, year} = this.props.info;
+
+    if(month < 10 && month > 0){month = '0' + '' + month;}
        
       
     //Take the Lyris Name and make a url slug out of it.

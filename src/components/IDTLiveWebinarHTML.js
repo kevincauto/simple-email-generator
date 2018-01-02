@@ -25,7 +25,7 @@ export default class IDTLiveWebinarHTML extends React.Component {
         const { lyrisName='', title, date, provider, supporter, cost, credits, description, lo1, lo2, lo3, presenter, link, tvLink, unsubscribe, disclosure, cta='View the Webinar', header='http://aegispublications.com/news/idt/2015/06/tomorrow.jpg' } = this.props.info[this.props.info.selected_template];
         
         let {month, year} = this.props.info;
-      
+        if(month < 10 && month > 0){month = '0' + '' + month;}
          //Take the Lyris Name and make a url slug out of it.
         let slug = lyrisName.toString()
             .replace(/\s+/g, '-')           // Replace spaces with -
