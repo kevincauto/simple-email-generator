@@ -127,7 +127,7 @@ export default class IDTOnDemandWebinarHTML extends React.Component {
             <td colspan="2" align="center" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
               
               <br>
-              You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | <em>Inside Dental Technology</em>.<br />To ensure delivery, please add reply-207852@news.aegispublications.com to your address book<br />
+              You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | <em>Inside Dental Technology</em>.<br />To ensure delivery, please add <a href="mailto:reply-207852@news.aegispublications.com" target="_blank" style="color:#666; text-decoration:none;">reply-207852@news.aegispublications.com</a> to your address book<br />
               ${unsubscribe}<br />
               <em>Inside Dental Technology</em> an AEGIS Publication | 104 Pheasant Run, Suite 105 | Newtown, PA 18940 | <a href="https://www.aegisdentalnetwork.com/privacy-policy" target="_blank" style="color:#666; text-decoration:none;">Privacy Policy</a></td>
             </tr>
@@ -141,7 +141,7 @@ export default class IDTOnDemandWebinarHTML extends React.Component {
         </body></html>`;
 
 //Text Email        
-let textEmail = `Inside Dental Technology Webinar
+let textEmail = `Inside Dental Technology On-Demand Webinar
 
 ${title}       
 ${link}
