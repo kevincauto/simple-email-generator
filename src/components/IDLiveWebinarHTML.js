@@ -1,50 +1,50 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
-import {saveAs} from 'file-saver';
+import { saveAs } from 'file-saver';
 
 
 export default class IDLiveWebinarHTML extends React.Component {
-    downloadHtml(html, fileName){
-        if(!fileName){
-          alert("This email needs a name in order to be downloaded.");
-          return;
+    downloadHtml(html, fileName) {
+        if (!fileName) {
+            alert("This email needs a name in order to be downloaded.");
+            return;
         };
-        var file = new File([html], fileName + '.html', {type: "text/html"});
+        var file = new File([html], fileName + '.html', { type: "text/html" });
         saveAs(file);
-      }
-    
-      downloadText(textEmail,fileName){
-        if(!fileName){
-          alert("This email needs a name in order to be downloaded.");
-          return;
+    }
+
+    downloadText(textEmail, fileName) {
+        if (!fileName) {
+            alert("This email needs a name in order to be downloaded.");
+            return;
         };
-        var file = new File([textEmail], fileName + '.txt', {type: "text/plain;charset=utf-8"});
+        var file = new File([textEmail], fileName + '.txt', { type: "text/plain;charset=utf-8" });
         saveAs(file);
-      }
-    
-    render(){
-        const {title, date, provider, supporter, cost, credits, 
-            description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
+    }
+
+    render() {
+        const { title, date, provider, supporter, cost, credits,
+            description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             lo1, lo2, lo3, presenter, link, headshot, tvLink, unsubscribe, disclosure,
-            emailName='',
-            cta="View the Webinar"
+            emailName = '',
+            cta = "View the Webinar"
         } = this.props.info[this.props.info.selected_template];
-        
-    let {month, year} = this.props.info;
-    if(month < 10 && month > 0){month = '0' + '' + month;}
-    //Take the email name and make a url slug out of it.
-    let slug = emailName.toString()
-      .replace(/\s+/g, '-')           // Replace spaces with -
-      .replace(/[^\w-]+/g, '')       // Remove all non-word chars
-      .replace(/--+/g, '-')         // Replace multiple - with single -
-      .replace(/^-+/, '')             // Trim - from start of text
-      .replace(/-+$/, '');            // Trim - from end of text
-    
-    let url = `http://aegispublications.com/news/id/${year}/${month}/${slug}.html`;
-            let image = 'http://placehold.it/140x180';
-        if(headshot){image = headshot}
-        let html 
-        
+
+        let { month, year } = this.props.info;
+        if (month < 10 && month > 0) { month = '0' + '' + month; }
+        //Take the email name and make a url slug out of it.
+        let slug = emailName.toString()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w-]+/g, '')       // Remove all non-word chars
+            .replace(/--+/g, '-')         // Replace multiple - with single -
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
+
+        let url = `http://aegispublications.com/news/id/${year}/${month}/${slug}.html`;
+        let image = 'http://placehold.it/140x180';
+        if (headshot) { image = headshot }
+        let html
+
         let start = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
             <html xmlns="http://www.w3.org/1999/xhtml">
                 <head>
@@ -117,9 +117,9 @@ export default class IDLiveWebinarHTML extends React.Component {
                         <li>${lo2}</li>
                         <li>${lo3}</li>
                     </ul>`
-                let disclosureSection = '';
-                if(disclosure){
-                    disclosureSection = `
+        let disclosureSection = '';
+        if (disclosure) {
+            disclosureSection = `
                     <br />
                 <span style="font-size:11px; font-weight:bold; color:#9d0707;">
                     DISCLOSURE:
@@ -128,9 +128,9 @@ export default class IDLiveWebinarHTML extends React.Component {
                 <span style="font-size:11px">
                 ${disclosure}
                 </span>`
-                }
+        }
 
-                    
+
         let presenterInfo = `
                 </td>
         
@@ -163,10 +163,10 @@ export default class IDLiveWebinarHTML extends React.Component {
                 </td>
         
             </tr>`
-            let tv = '';
+        let tv = '';
 
-            if(tvLink){
-                tv = `
+        if (tvLink) {
+            tv = `
                 <tr>
             
                     <Webinar Software Requirements>
@@ -244,11 +244,11 @@ export default class IDLiveWebinarHTML extends React.Component {
                 </tr>
             
                 `
-            }
-            
-        
-        
-           let end = `
+        }
+
+
+
+        let end = `
            <tr>
            <td align="center" colspan="2" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
              
@@ -268,8 +268,8 @@ export default class IDLiveWebinarHTML extends React.Component {
                 <area shape="rect" coords="58,2,83,22" href="mailto:?subject=FW: Live CDE Webinar&amp;body=I thought you might be interested in this: ${url}" target="_blank" alt="mailto">
             </map>
             </body></html>`;
-//Text Email        
-let textEmail = `Inside Dentistry Webinar
+        //Text Email        
+        let textEmail = `Inside Dentistry Webinar
 
 ${title}       
 ${link}
@@ -281,47 +281,35 @@ Commercial Supporter: ${supporter}
 Cost: ${cost}
 CDE Credits: ${credits}
 
-Description:
-${description}
+Description:\n${description}\n${lo1 && lo2 && lo3 ? `\nLearning Objectives:\n${lo1}\n${lo2}\n${lo3}\n` : ''}${disclosure ? `\nDisclosure:\n${disclosure}\n` : ``}\n${link}
 
-Learning Objectives
-${lo1}
-${lo2}
-${lo3}
-
-${disclosure ? 
-`Disclosure:
-${disclosure}
-` : ``}     
-${link}
-
-${tvLink? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
+${tvLink ? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
 http://forms.coronapro.com/2y1pylWI
 
 Webinar Hardware/Software Requirements
 CDEWorld requires Internet Explorer® version 7.0 or higher, or Firefox 3.0 or higher, a computer running Windows® XP, Windows® Vista, Windows® 7, or Mac OS X, 512MB of RAM or greater, 1.5 GHZ or faster processor, and a screen resolution of 1024x768 or higher. This activity will be marked with the information and/or links to the required software. That software may be Adobe® Acrobat®, Windows Media®Player or Microsoft® Silverlight™.`: ``}
-`;  
-        html = start +  disclosureSection + presenterInfo + tv + end;    
+`;
+        html = start + disclosureSection + presenterInfo + tv + end;
 
         //Sanitize data to avoid XSS attack
         let cleanHtml = DOMPurify.sanitize(html);
 
-        return(
+        return (
             <div >
-            <div className="content" dangerouslySetInnerHTML={{__html: cleanHtml}}></div>
-            <br />
-            <h3 className="download-header">3. Copy or download the email.</h3>
-            <div className="copy-paste">
-              <div className="copyArea html-copy">
-                <textarea value={html} readOnly={true}  />
-                <button onClick={()=>this.downloadHtml(html,slug)} className="download-button">Download HTML Email</button>
-              </div>
-              <div className="copyArea text-copy">
-                <textarea value={textEmail} readOnly={true}/>
-                <button onClick={()=>this.downloadText(textEmail,slug)} className="download-button">Download Text-Version Email</button>
-              </div>
+                <div className="content" dangerouslySetInnerHTML={{ __html: cleanHtml }}></div>
+                <br />
+                <h3 className="download-header">3. Copy or download the email.</h3>
+                <div className="copy-paste">
+                    <div className="copyArea html-copy">
+                        <textarea value={html} readOnly={true} />
+                        <button onClick={() => this.downloadHtml(html, slug)} className="download-button">Download HTML Email</button>
+                    </div>
+                    <div className="copyArea text-copy">
+                        <textarea value={textEmail} readOnly={true} />
+                        <button onClick={() => this.downloadText(textEmail, slug)} className="download-button">Download Text-Version Email</button>
+                    </div>
+                </div>
             </div>
-          </div>
         );
     }
 }

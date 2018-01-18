@@ -1,47 +1,47 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
-import {saveAs} from 'file-saver';
+import { saveAs } from 'file-saver';
 
 
 export default class CDEWLiveWebinarHTML extends React.Component {
-  downloadHtml(html, fileName){
-    if(!fileName){
+  downloadHtml(html, fileName) {
+    if (!fileName) {
       alert("This email needs a name in order to be downloaded.");
       return;
     };
-    var file = new File([html], fileName + '.html', {type: "text/html"});
+    var file = new File([html], fileName + '.html', { type: "text/html" });
     saveAs(file);
   }
 
-  downloadText(textEmail,fileName){
-    if(!fileName){
+  downloadText(textEmail, fileName) {
+    if (!fileName) {
       alert("This email needs a name in order to be downloaded.");
       return;
     };
-    var file = new File([textEmail], fileName + '.txt', {type: "text/plain;charset=utf-8"});
+    var file = new File([textEmail], fileName + '.txt', { type: "text/plain;charset=utf-8" });
     saveAs(file);
   }
 
-  render(){
+  render() {
     //Import data from the form fields.
     let {
       title = 'To Be Updated',
       date = 'Date To Be Updated',
-      link, 
-      description ='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      lo1, lo2, lo3, headshot,  
-      presenter='Lorem Ipsum, DDS', 
+      link,
+      description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      lo1, lo2, lo3, headshot,
+      presenter = 'Lorem Ipsum, DDS',
       provider = '',
       supporter = '',
       cost = '',
       credits = '',
-      tvLink, tagline, unsubscribe, disclosure, 
-      emailName='',
-      cta='View the Webinar'
+      tvLink, tagline, unsubscribe, disclosure,
+      emailName = '',
+      cta = 'View the Webinar'
     } = this.props.info[this.props.info.selected_template];
 
-    let {month, year} = this.props.info;
-    if(month < 10 && month > 0){month = '0' + '' + month;}
+    let { month, year } = this.props.info;
+    if (month < 10 && month > 0) { month = '0' + '' + month; }
     //Take the Lyris Name and make a url slug out of it.
     let slug = emailName.toString()
       .replace(/\s+/g, '-')           // Replace spaces with -
@@ -49,13 +49,13 @@ export default class CDEWLiveWebinarHTML extends React.Component {
       .replace(/--+/g, '-')         // Replace multiple - with single -
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
-    
+
     let url = `http://aegispublications.com/news/cdeworld/${year}/${month}/${slug}.html`;
-        
-        let image = 'http://placehold.it/130x160';
-        if(headshot){image = headshot.trim()}
-        
-        let start = `
+
+    let image = 'http://placehold.it/130x160';
+    if (headshot) { image = headshot.trim() }
+
+    let start = `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -112,7 +112,7 @@ export default class CDEWLiveWebinarHTML extends React.Component {
                   <li>${lo3}</li>
                 </ul>` : ``}
 
-                ${disclosure ? `<br /><strong>Disclosure:</strong><br />${disclosure}<br /><br />` : '' }
+                ${disclosure ? `<br /><strong>Disclosure:</strong><br />${disclosure}<br /><br />` : ''}
 
                 </td>
               <!-- Presenter's Photo -->
@@ -127,11 +127,11 @@ export default class CDEWLiveWebinarHTML extends React.Component {
             <tr>
               <td colspan="2" style="padding:12px 32px; font-size:13px; color:#005fae;"></td>
             </tr>`
-        
-            let tv = ``;
-            
-            if(tvLink){
-                tv = `<tr>
+
+    let tv = ``;
+
+    if (tvLink) {
+      tv = `<tr>
                 <td colspan="3" align="left" style="padding:14px 32px; border-top:solid 1px #ebebeb;"><table cellpadding="0" cellspacing="0" border="0" align="left" bgcolor="#FFFFFF">
                   <tbody>
                     <tr>
@@ -150,9 +150,9 @@ export default class CDEWLiveWebinarHTML extends React.Component {
                     </tbody>
                   </table></td>
               </tr>`
-            }
+    }
 
-            let end =`
+    let end = `
             <tr>
             <!-- Fine Print Footer -->
             <td colspan="2" align="center"><img src="http://cdeworld.com/media/3742" width="575" height="76" style="margin-top:20px; padding-top:20px; padding-bottom:10px; border-top:1px solid #dedede;" /></td>
@@ -185,8 +185,8 @@ export default class CDEWLiveWebinarHTML extends React.Component {
       
       </body></html>`
 
-//Text Email        
-let textEmail = `CDEWorld Webinar
+    //Text Email        
+    let textEmail = `CDEWorld Webinar
         
 ${title}       
 ${link}
@@ -198,48 +198,36 @@ Commercial Supporter: ${supporter}
 Cost: ${cost}
 CDE Credits: ${credits}
 
-Description:
-${description}
+Description:\n${description}\n${lo1 && lo2 && lo3 ? `\nLearning Objectives:\n${lo1}\n${lo2}\n${lo3}\n` : ''}${disclosure ? `\nDisclosure:\n${disclosure}\n` : ``}\n${link}
 
-Learning Objectives
-${lo1}
-${lo2}
-${lo3}
-
-${disclosure ? 
-`Disclosure:
-${disclosure}
-` : ``}     
-${link}
-
-${tvLink? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
+${tvLink ? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
 ${tvLink}
 
 Webinar Hardware/Software Requirements
 CDEWorld requires Internet Explorer® version 7.0 or higher, or Firefox 3.0 or higher, a computer running Windows® XP, Windows® Vista, Windows® 7, or Mac OS X, 512MB of RAM or greater, 1.5 GHZ or faster processor, and a screen resolution of 1024x768 or higher. This activity will be marked with the information and/or links to the required software. That software may be Adobe® Acrobat®, Windows Media®Player or Microsoft® Silverlight™.`: ``}
-`;  
-        let html;
-        html = start + tv + end;    
-        //Sanitize data to avoid XSS attack
-        let cleanHtml = DOMPurify.sanitize(html);
+`;
+    let html;
+    html = start + tv + end;
+    //Sanitize data to avoid XSS attack
+    let cleanHtml = DOMPurify.sanitize(html);
 
 
-        return(
-          <div >
-            <div className="content" dangerouslySetInnerHTML={{__html: cleanHtml}}></div>
-            <br />
-            <h3 className="download-header">3. Copy or download the email.</h3>
-            <div className="copy-paste">
-              <div className="copyArea html-copy">
-                <textarea value={html} readOnly={true}  />
-                <button onClick={()=>this.downloadHtml(html,slug)} className="download-button">Download HTML Email</button>
-              </div>
-              <div className="copyArea text-copy">
-                <textarea value={textEmail} readOnly={true}/>
-                <button onClick={()=>this.downloadText(textEmail,slug)} className="download-button">Download Text-Version Email</button>
-              </div>
-            </div>
+    return (
+      <div >
+        <div className="content" dangerouslySetInnerHTML={{ __html: cleanHtml }}></div>
+        <br />
+        <h3 className="download-header">3. Copy or download the email.</h3>
+        <div className="copy-paste">
+          <div className="copyArea html-copy">
+            <textarea value={html} readOnly={true} />
+            <button onClick={() => this.downloadHtml(html, slug)} className="download-button">Download HTML Email</button>
           </div>
-        )
-    }
+          <div className="copyArea text-copy">
+            <textarea value={textEmail} readOnly={true} />
+            <button onClick={() => this.downloadText(textEmail, slug)} className="download-button">Download Text-Version Email</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }

@@ -1,49 +1,49 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
-import {saveAs} from 'file-saver';
+import { saveAs } from 'file-saver';
 
-export default class CCEDLiveWebinarHTML extends React.Component{ 
-  downloadHtml(html, fileName){
-    if(!fileName){
+export default class CCEDLiveWebinarHTML extends React.Component {
+  downloadHtml(html, fileName) {
+    if (!fileName) {
       alert("This email needs a name in order to be downloaded.");
       return;
     };
-    var file = new File([html], fileName + '.html', {type: "text/html"});
+    var file = new File([html], fileName + '.html', { type: "text/html" });
     saveAs(file);
   }
 
-  downloadText(textEmail,fileName){
-    if(!fileName){
+  downloadText(textEmail, fileName) {
+    if (!fileName) {
       alert("This email needs a name in order to be downloaded.");
       return;
     };
-    var file = new File([textEmail], fileName + '.txt', {type: "text/plain;charset=utf-8"});
+    var file = new File([textEmail], fileName + '.txt', { type: "text/plain;charset=utf-8" });
     saveAs(file);
   }
 
-  render(){
+  render() {
     //Import data from the form fields.
     let {
       title = 'To Be Updated',
       date = 'Date To Be Updated',
-      link, 
-      description ='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      lo1, lo2, lo3, headshot,  
-      presenter='Lorem Ipsum, DDS', 
+      link,
+      description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      lo1, lo2, lo3, headshot,
+      presenter = 'Lorem Ipsum, DDS',
       provider = '',
       supporter = '',
       cost = '',
       credits = '',
-      tvLink, tagline, unsubscribe, disclosure, 
-      emailName='',
-      cta='View the Webinar'
+      tvLink, tagline, unsubscribe, disclosure,
+      emailName = '',
+      cta = 'View the Webinar'
     } = this.props.info[this.props.info.selected_template];
 
-    let {month, year} = this.props.info;
+    let { month, year } = this.props.info;
 
-    if(month < 10 && month > 0){month = '0' + '' + month;}
-       
-      
+    if (month < 10 && month > 0) { month = '0' + '' + month; }
+
+
     //Take the Lyris Name and make a url slug out of it.
     emailName = emailName.toString()
       .replace(/\s+/g, '-')           // Replace spaces with -
@@ -51,17 +51,17 @@ export default class CCEDLiveWebinarHTML extends React.Component{
       .replace(/--+/g, '-')         // Replace multiple - with single -
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
-    
+
     let url = `http://aegispublications.com/news/cced/${year}/${month}/${emailName}.html`;
-     
+
     //Set up a dummy image when the template first loads.
     let image = 'http://placehold.it/140x180';
-    if(headshot){image = headshot}
+    if (headshot) { image = headshot }
 
     //Prevent whitespace from messing up link.
-    if(link){link = link.trim()};
+    if (link) { link = link.trim() };
 
-        const first=`
+    const first = `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
@@ -107,9 +107,9 @@ export default class CCEDLiveWebinarHTML extends React.Component{
             </td>
           </tr>-->`
 
-      //If, however, the tagline is filled out, display it.
-      if(tagline){
-        tag = `
+    //If, however, the tagline is filled out, display it.
+    if (tagline) {
+      tag = `
             <tr>
             <td colspan="2">
               <table width="599" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #e4e4e4; margin:0 32px 20px 32px;">
@@ -122,9 +122,9 @@ export default class CCEDLiveWebinarHTML extends React.Component{
             </td>
           </tr>
             `
-          }
-        
-      let main = `
+    }
+
+    let main = `
           <tr>
             <td height="348" colspan="2" valign="top" style="padding:12px 32px 24px 32px; font-size:13px; color:#c2904a; line-height:16px; border-bottom: 1px solid #e4e4e4;">
               <table cellpadding="0" cellspacing="0" border="0" align="right" style="padding:0 0 50px 0;">
@@ -150,30 +150,30 @@ export default class CCEDLiveWebinarHTML extends React.Component{
               <strong style="color:#424242;">Description:</strong><br /></span>
               <div style="margin:5px 0 0 0; color:#424242; width:57%;">${description}</div>		
               `
-              
-        //Logic to render Learning Objectives based on how many LOs there are.
-        let lo = '';
-        
 
-        if(lo1 && !lo2 && !lo3 ) {
-          lo = `
+    //Logic to render Learning Objectives based on how many LOs there are.
+    let lo = '';
+
+
+    if (lo1 && !lo2 && !lo3) {
+      lo = `
                 <br />
                 <span style="color:#424242; font-weight:bold;">Learning Objective:</span>
                 <ul style="margin:5px 0 0 0; padding-left:1.3em; color:#424242; width:57%;">
                     <li>${lo1}</li>
-                  </ul>`  
-        };
-        if(lo1 && lo2 && !lo3 ) {
-          lo = `
+                  </ul>`
+    };
+    if (lo1 && lo2 && !lo3) {
+      lo = `
                 <br />
                 <span style="color:#424242; font-weight:bold;">Learning Objectives:</span>
                 <ul style="margin:5px 0 0 0; padding-left:1.3em; color:#424242; width:57%;">
                     <li>${lo1}</li>
                     <li>${lo2}</li>
-                  </ul>`  
-          };
-        if(lo1 && lo2 && lo3){
-            lo = `
+                  </ul>`
+    };
+    if (lo1 && lo2 && lo3) {
+      lo = `
                 <br />
                 <span style="color:#424242; font-weight:bold;">Learning Objectives:</span>
                 <ul style="margin:5px 0 0 0; padding-left:1.3em; color:#424242; width:57%;">
@@ -182,28 +182,28 @@ export default class CCEDLiveWebinarHTML extends React.Component{
                     <li>${lo3}</li>
                   </ul>
                   `
-          }
-        let dis = '';
-          if(disclosure){
-                dis = `
+    }
+    let dis = '';
+    if (disclosure) {
+      dis = `
                 <br />
                 <strong style="color:#424242;">Disclosure:</strong><br /></span>
                 <div style="margin:5px 0 0 0; color:#424242; width:57%;">${disclosure}</div>		
                 <br />
                 `
-          }
-        let trEnd=
-              `                  
+    }
+    let trEnd =
+      `                  
               </td>
               </tr>
               `
-          //The Bottom TV Section is only used in the reminder emails.
-          let tv; 
-          if(!tvLink){
-            tv = '';
-          }
-          else{
-            tv = `
+    //The Bottom TV Section is only used in the reminder emails.
+    let tv;
+    if (!tvLink) {
+      tv = '';
+    }
+    else {
+      tv = `
                 <tr>
                 <td colspan="2" valign="top" style="padding:12px 32px 24px 32px; font-size:13px; color:#c2904a; line-height:16px; border-bottom: 1px solid #e4e4e4;">
                   <table cellpadding="0" cellspacing="0" border="0" align="left" bgcolor="#FFFFFF"  >
@@ -228,9 +228,9 @@ export default class CCEDLiveWebinarHTML extends React.Component{
                   </td>
               </tr>
                 `
-            }
-        
-          const theRest = `
+    }
+
+    const theRest = `
           <tr>
             <!-- Fine Print Footer -->
             <td colspan="2" align="center">
@@ -259,8 +259,8 @@ export default class CCEDLiveWebinarHTML extends React.Component{
         </body></html>
         `;
 
-//Text Email        
-let textEmail = `Compendium Webinar
+    //Text Email        
+    let textEmail = `Compendium Webinar
 
 ${title}       
 ${link}
@@ -272,48 +272,36 @@ Commercial Supporter: ${supporter}
 Cost: ${cost}
 CDE Credits: ${credits}
 
-Description:
-${description}
+Description:\n${description}\n${lo1 && lo2 && lo3 ? `\nLearning Objectives:\n${lo1}\n${lo2}\n${lo3}\n` : ''}${disclosure ? `\nDisclosure:\n${disclosure}\n` : ``}\n${link}
 
-Learning Objectives
-${lo1}
-${lo2}
-${lo3}
-
-${disclosure ? 
-`Disclosure:
-${disclosure}
-` : ``}     
-${link}
-
-${tvLink? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
+${tvLink ? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
 http://forms.coronapro.com/2y1pylWI
 
 Webinar Hardware/Software Requirements
 CDEWorld requires Internet Explorer® version 7.0 or higher, or Firefox 3.0 or higher, a computer running Windows® XP, Windows® Vista, Windows® 7, or Mac OS X, 512MB of RAM or greater, 1.5 GHZ or faster processor, and a screen resolution of 1024x768 or higher. This activity will be marked with the information and/or links to the required software. That software may be Adobe® Acrobat®, Windows Media®Player or Microsoft® Silverlight™.`: ``}
-`;  
+`;
 
-        let html = first + tag + main + lo + dis + trEnd + tv + theRest;
+    let html = first + tag + main + lo + dis + trEnd + tv + theRest;
 
-        //Sanitize data to avoid XSS attack
-        let cleanHtml = DOMPurify.sanitize(html);
+    //Sanitize data to avoid XSS attack
+    let cleanHtml = DOMPurify.sanitize(html);
 
-        return(
-          <div >
-            <div className="content" dangerouslySetInnerHTML={{__html: cleanHtml}}></div>
-            <br />
-            <h3 className="download-header">3. Copy or download the email.</h3>
-            <div className="copy-paste">
-              <div className="copyArea html-copy">
-                <textarea value={html} readOnly={true}  />
-                <button onClick={()=>this.downloadHtml(html,emailName)} className="download-button">Download HTML Email</button>
-              </div>
-              <div className="copyArea text-copy">
-                <textarea value={textEmail} readOnly={true}/>
-                <button onClick={()=>this.downloadText(textEmail,emailName)} className="download-button">Download Text-Version Email</button>
-              </div>
-            </div>
+    return (
+      <div >
+        <div className="content" dangerouslySetInnerHTML={{ __html: cleanHtml }}></div>
+        <br />
+        <h3 className="download-header">3. Copy or download the email.</h3>
+        <div className="copy-paste">
+          <div className="copyArea html-copy">
+            <textarea value={html} readOnly={true} />
+            <button onClick={() => this.downloadHtml(html, emailName)} className="download-button">Download HTML Email</button>
           </div>
-        )
-    }
+          <div className="copyArea text-copy">
+            <textarea value={textEmail} readOnly={true} />
+            <button onClick={() => this.downloadText(textEmail, emailName)} className="download-button">Download Text-Version Email</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
