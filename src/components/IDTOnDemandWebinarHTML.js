@@ -153,7 +153,7 @@ Commercial Supporter: ${supporter}
 Cost: ${cost}
 CDE Credits: ${credits}
 
-Description:\n${description}\n${lo1 && lo2 && lo3 ? `\nLearning Objectives:\n${lo1}\n${lo2}\n${lo3}\n` : ''}${disclosure ? `\nDisclosure:\n${disclosure}\n` : ``}\n${link}`;
+Description:\n${description}\n${lo1 && lo2 && lo3 ? `\nLearning Objectives:\n${lo1}\n${lo2}\n${lo3}\n` : ''}${disclosure ? `\nDisclosure:\n${disclosure}\n` : ``}\n${link}`
 
 
     //Sanitize data to avoid XSS attack

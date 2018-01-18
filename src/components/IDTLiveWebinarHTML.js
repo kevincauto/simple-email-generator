@@ -201,17 +201,7 @@ Commercial Supporter: ${supporter}
 Cost: ${cost}
 CDE Credits: ${credits}
 
-Description:
-${description}
-
-Learning Objectives
-${lo1}
-${lo2}
-${lo3}
-
-${disclosure ? `Disclosure:\n${disclosure}` : ``}     
-
-${link}
+Description:\n${description}\n${lo1 && lo2 && lo3 ? `\nLearning Objectives:\n${lo1}\n${lo2}\n${lo3}\n` : ''}${disclosure ? `\nDisclosure:\n${disclosure}\n` : ``}\n${link}
 
 ${tvLink? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
 http://forms.coronapro.com/2y1pylWI
