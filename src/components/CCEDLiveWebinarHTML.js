@@ -275,7 +275,7 @@ CDE Credits: ${credits}
 Description:\n${description}\n${lo1 && lo2 && lo3 ? `\nLearning Objectives:\n${lo1}\n${lo2}\n${lo3}\n` : ''}${disclosure ? `\nDisclosure:\n${disclosure}\n` : ``}\n${link}
 
 ${tvLink ? `Be sure to test your setup here BEFORE the Webinar to ensure everything is working properly!
-http://forms.coronapro.com/2y1pylWI
+${tvLink}
 
 Webinar Hardware/Software Requirements
 CDEWorld requires Internet Explorer® version 7.0 or higher, or Firefox 3.0 or higher, a computer running Windows® XP, Windows® Vista, Windows® 7, or Mac OS X, 512MB of RAM or greater, 1.5 GHZ or faster processor, and a screen resolution of 1024x768 or higher. This activity will be marked with the information and/or links to the required software. That software may be Adobe® Acrobat®, Windows Media®Player or Microsoft® Silverlight™.`: ``}
