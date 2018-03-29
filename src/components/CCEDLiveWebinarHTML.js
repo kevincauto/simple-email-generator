@@ -139,7 +139,7 @@ export default class CCEDLiveWebinarHTML extends React.Component {
                 </tr>
             </table>		
                 
-              <div style="font-size:18px; color:#c2904a; line-height:20px; font-weight:bold; width:440px; margin:17px 0 0 0;">
+              <div style="font-size:18px; color:#c2904a; line-height:20px; font-weight:bold; width:420px; margin:17px 0 0 0;">
               ${title}</div><br />
               <a href="${link}" target="_blank" style="font-size: 16px; font-weight:bold; display: inline-block;background-color: #c2904a;padding: 10px 11px; color: #fff;text-decoration: none; text-transform:uppercase; border-radius: 10px; text-align:center; margin:0 0 7px 0;">${date}</a> <br />
                     <a href="${link}" target="_blank" style="font-size: 16px; font-weight:bold; display: inline-block;background-color: #c2904a;padding: 10px 11px; color: #fff;text-decoration: none; text-transform:uppercase; border-radius: 10px; text-align:center;">
