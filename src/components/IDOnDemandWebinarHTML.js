@@ -23,7 +23,7 @@ export default class IDOnDemandWebinarHTML extends React.Component {
 
     render() {
         const {
-        emailName = '',
+            emailName = '',
             title, dates, provider, supporter, cost, credits,
             description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             lo1, lo2, lo3, presenter, link, tvLink, unsubscribe, disclosure, imgLink
@@ -169,9 +169,9 @@ export default class IDOnDemandWebinarHTML extends React.Component {
         <td align="center" colspan="2" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
           
           <br>
-          You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | <em>Inside Dentistry</em>.<br />To ensure delivery, please add <a href="mailto:reply-207852@news.aegispublications.com" target="_blank" style="color:#666; text-decoration:none;">reply-207852@news.aegispublications.com</a> to your address book<br />
+          You received this e-mail because you are a customer of <a href="https://www.aegisdentalnetwork.com" target="_blank" style="color:#666; text-decoration:none;">AEGIS Dental Network</a> | <em>Inside Dentistry</em>.<br />To ensure delivery, please add <a href="mailto:reply-207852@news.aegispublications.com" target="_blank" style="color:#666; text-decoration:none;">reply-207852@news.aegispublications.com</a> to your address book.<br />
           ${unsubscribe}<br />
-         <em>Inside Dentistry</em> an AEGIS Publication | 104 Pheasant Run, Suite 105 | Newtown, PA 18940 | <a href="https://www.aegisdentalnetwork.com/privacy-policy" target="_blank" style="color:#666; text-decoration:none;">Privacy Policy</a></td>
+         <em>Inside Dentistry</em>, an AEGIS Publication | 104 Pheasant Run, Suite 105 | Newtown, PA 18940 | <a href="https://www.aegisdentalnetwork.com/privacy-policy" target="_blank" style="color:#666; text-decoration:none;">Privacy Policy</a></td>
         </tr>
         <tr>
             <td colspan="2" height="10">
