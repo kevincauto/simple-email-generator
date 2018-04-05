@@ -164,7 +164,13 @@ export default class IDOnDemandWebinarHTML extends React.Component {
             <td colspan="2" height="10">
             </td>
         </tr>
-        
+        <tr>
+            <!-- Fine Print Footer -->
+            <td colspan="2" align="center">
+            <img src="http://aegispublications.com/news/id/webinars/webinar-footer.jpg" width="575" height="85" />
+            </td>
+            <!-- /Fine Print Footer -->
+        </tr>
         <tr>
         <td align="center" colspan="2" style="font-family:Arial, sans-serif; font-size:11px; text-align:center; color:#666666; font-size:10px;" valign="middle">
           
